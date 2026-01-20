@@ -34,5 +34,5 @@ ENV NZ_CLIENT_SECRET=1FyZCXk9XGSarBQrCVE8WjyzXTfJFqH4
 # 启动命令：
 # 1. 启动探针：直接运行并从环境变量读取配置
 # 2. 启动 WebSSH：注入 asyncio 补丁并降权运行
-CMD /usr/bin/nezha-agent -s ${NZ_SERVER} -p ${NZ_CLIENT_SECRET} --tls > /dev/null 2>&1 & \
+CMD /usr/bin/nezha-agent -s ${NZ_SERVER} -p ${NZ_CLIENT_SECRET} --tls --debug & \
     su webssh -s /bin/sh -c "python3 -c 'import asyncio; asyncio.set_event_loop(asyncio.new_event_loop())'; python3 run.py --delay=10 --encoding=utf-8 --fbidhttp=False --maxconn=20 --policy=warning --redirect=False --timeout=10 --xsrf=False --xheaders --wpintvl=1"
