@@ -26,9 +26,7 @@ EXPOSE 8888/tcp
 
 USER root
 
-# 修改后的启动命令：
-# 1. 移除了 "> /dev/null 2>&1" -> 让报错直接显示出来
-# 2. 移除了 "--tls" -> 先尝试非加密连接，排除证书错误
-# 3. 添加了 "--debug" -> 查看具体哪里卡住了
-CMD /usr/bin/nezha-agent -s agn.xinxi.pp.ua:443 -p 1FyZCXk9XGSarBQrCVE8WjyzXTfJFqH4 --debug & \
+# 核心修改：重新加入 --tls，这是 443 端口必须的
+# 如果依然不行，请确认你的面板是否开启了 Cloudflare 的 gRPC 支持
+CMD /usr/bin/nezha-agent -s agn.xinxi.pp.ua:443 -p 1FyZCXk9XGSarBQrCVE8WjyzXTfJFqH4 --tls --debug & \
     su webssh -s /bin/sh -c "python3 -c 'import asyncio; asyncio.set_event_loop(asyncio.new_event_loop())'; python3 run.py --delay=10 --encoding=utf-8 --fbidhttp=False --maxconn=20 --policy=warning --redirect=False --timeout=10 --xsrf=False --xheaders --wpintvl=1 --debug"
