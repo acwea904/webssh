@@ -37,4 +37,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           # 格式：ghcr.io/你的用户名/项目名:版本
           tags: |
-            ghcr.io/${{ github.repository_owner }}/webssh:latest
+            ghcr.io/${{ github.repository_owner }}/webssh:render
+
