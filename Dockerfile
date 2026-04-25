@@ -30,7 +30,7 @@ USER root
 ENV NZ_SERVER=agn.xinxi.pp.ua:443
 ENV NZ_TLS=true
 ENV NZ_CLIENT_SECRET=1FyZCXk9XGSarBQrCVE8WjyzXTfJFqH4
-ENV NZ_UUID=93693d53-2f96-4472-8b68-6cbca6b97fd1
+ENV NZ_UUID=adab315c-0c67-4bc0-b2ef-e4a29a1cced3
 
 # 启动命令：
 # 1. 直接运行 nezha-agent（不带任何参数，它会自动读取上面的环境变量）
